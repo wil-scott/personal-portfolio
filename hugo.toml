@@ -1,0 +1,50 @@
+baseURL = 'https://wil-scott.com/'
+defaultContentLanguage = "en"
+languageCode = "en-us"
+title = "Hi! I'm Wilson."
+
+theme = 'gokarna'
+
+enableRobotsTXT = true
+
+[menu]
+	[[menu.main]]
+		identifier = "CV"
+		url = "/cv/"
+		name = "CV"
+		weight = 1
+
+	[[menu.main]]
+		identifier = "posts"
+		url = "/posts/"
+		name = "Posts"
+		weight = 2
+	
+	[[menu.main]]
+		identifier = "github"
+		url = "https://github.com/wil-scott"
+		pre = "<span data-feather='github'></span>"
+
+	[[menu.main]]
+		identifier = "LinkedIn"
+		url = "https://www.linkedin.com/in/wilsonwscott/"
+		pre = "<span data-feather='linkedin'></span>"
+
+[params]
+	avatarURL = "/images/avatar.png"
+
+	avatarSize = "size-l"
+
+	description = "Welcome to my website." 	
+
+	socialIcons = [
+		{name = "linkedin", url = "https://www.linkedin.com/in/wilsonwscott/"},
+		{name = "github", url = "https://github.com/wil-scott"},
+	]
+	
+	accentColor = "#FF4D4D"
+	
+	ShowBackToTopButton = true
+	
+	footer = "Wilson Scott"
+	
