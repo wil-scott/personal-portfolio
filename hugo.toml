@@ -35,7 +35,7 @@ enableRobotsTXT = true
 
 	avatarSize = "size-l"
 
-	description = "Welcome to my website." 	
+	description = "I write software for embedded systems." 	
 
 	socialIcons = [
 		{name = "linkedin", url = "https://www.linkedin.com/in/wilsonwscott/"},
