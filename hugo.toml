@@ -12,25 +12,47 @@ enableRobotsTXT = true
 		identifier = "CV"
 		url = "/cv/"
 		name = "CV"
+		pre = "<span data-feather='briefcase'></span>"
 		weight = 1
+	
+	[[menu.main]]
+		identifier = "info"
+		url = "/info/"
+		name = "info"
+		pre = "<span data-feather='info'></span>"
+		weight = 2
+
+	[[menu.main]]
+		identifier = "projects"
+		url = "/projects/"
+		name = "projects"
+		pre = "<span data-feather='code'></span>"
+		weight = 3
 
 	[[menu.main]]
 		identifier = "posts"
 		url = "/posts/"
 		name = "Posts"
-		weight = 2
+		pre = "<span data-feather='book-open'></span>"
+		weight = 4
 	
 	[[menu.main]]
 		identifier = "github"
 		url = "https://github.com/wil-scott"
 		pre = "<span data-feather='github'></span>"
+		weight = 5
 
 	[[menu.main]]
 		identifier = "LinkedIn"
 		url = "https://www.linkedin.com/in/wilsonwscott/"
 		pre = "<span data-feather='linkedin'></span>"
+		weight = 6
 
 [params]
+	customHeadHTML = '''
+		<link rel="stylesheet" href="/css/styles.css">
+	'''
+
 	avatarURL = "/images/avatar.png"
 
 	avatarSize = "size-l"

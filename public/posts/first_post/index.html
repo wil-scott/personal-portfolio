@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        :root {
+            --accent-color: #FF4D4D;
+        }
+    </style>
+
+    
+    
+    
+    
+    
+    
+
+    
+    <title>Setting up an SDK for the ESP-01/ESP8266</title>
+    <meta name="description" content="I write software for embedded systems.">
+    <meta name="keywords" content=''>
+
+    <meta property="og:url" content="https://wil-scott.com/posts/first_post/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Setting up an SDK for the ESP-01/ESP8266">
+    <meta property="og:description" content="I write software for embedded systems.">
+    <meta property="og:image" content="https://wil-scott.com/images/avatar.png">
+    <meta property="og:image:secure_url" content="https://wil-scott.com/images/avatar.png">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Setting up an SDK for the ESP-01/ESP8266">
+    <meta name="twitter:description" content="I write software for embedded systems.">
+    <meta property="twitter:domain" content="https://wil-scott.com/posts/first_post/">
+    <meta property="twitter:url" content="https://wil-scott.com/posts/first_post/">
+    <meta name="twitter:image" content="https://wil-scott.com/images/avatar.png">
+
+    
+    <link rel="canonical" href="https://wil-scott.com/posts/first_post/" />
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/normalize.min.css" media="print">
+
+    
+    <link rel="stylesheet" type="text/css" href="/css/main.min.css">
+
+    
+    <link id="dark-theme" rel="stylesheet" href="/css/dark.min.css">
+
+    
+    <script src="/js/bundle.min.27043ee3e4fae9fba993230b5c2ba193e1f265beeea9c49a69d028f72b22ccb5.js" integrity="sha256-JwQ&#43;4&#43;T66fupkyMLXCuhk&#43;HyZb7uqcSaadAo9ysizLU="></script>
+
+    
+    
+</head>
+<body>
+        <script type="text/javascript">
+            
+            setThemeByUserPref();
+        </script><header class="header">
+    <nav class="header-nav">
+
+        
+        <div class="avatar">
+            <a href="https://wil-scott.com/">
+                <img src='/images/avatar.png' alt="avatar" />
+            </a>
+        </div>
+        
+
+        <div class="nav-title">
+            <a class="nav-brand" href="https://wil-scott.com/">Hi! I&#39;m Wilson.</a>
+        </div>
+
+        <div class="nav-links">
+            
+            <div class="nav-link">
+                <a href="https://wil-scott.com/cv/"> CV </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://wil-scott.com/posts/"> Posts </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://www.linkedin.com/in/wilsonwscott/"><span data-feather='linkedin'></span>  </a>
+            </div>
+            
+            <div class="nav-link">
+                <a href="https://github.com/wil-scott"><span data-feather='github'></span>  </a>
+            </div>
+            
+
+            <span class="nav-icons-divider"></span>
+            <div class="nav-link dark-theme-toggle">
+                <span id="dark-theme-toggle-screen-reader-target" class="sr-only"></span>
+                <a>
+                    <span id="theme-toggle-icon" data-feather="moon"></span>
+                </a>
+            </div>
+
+            <div class="nav-link" id="hamburger-menu-toggle">
+                <span id="hamburger-menu-toggle-screen-reader-target" class="sr-only">menu</span>
+                <a>
+                    <span data-feather="menu"></span>
+                </a>
+            </div>
+
+            
+            <ul class="nav-hamburger-list visibility-hidden">
+                
+                <li class="nav-item">
+                    <a href="https://wil-scott.com/cv/"> CV </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://wil-scott.com/posts/"> Posts </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://www.linkedin.com/in/wilsonwscott/"><span data-feather='linkedin'></span>  </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a href="https://github.com/wil-scott"><span data-feather='github'></span>  </a>
+                </li>
+                
+                <li class="nav-item dark-theme-toggle">
+                    <span id="dark-theme-toggle-screen-reader-target" class="sr-only">theme</span>
+                    <a>
+                        <span id="theme-toggle-icon" data-feather="moon"></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</header>
+<main id="content">
+    <div class="post container">
+    <div class="post-header-section">
+        <h1>Setting up an SDK for the ESP-01/ESP8266</h1>
+        <small role="doc-subtitle"></small>
+        <p class="post-date">February 8, 2024
+        
+        </p>
+
+        <ul class="post-tags">
+        
+        </ul>
+    </div>
+
+    <div class="post-content">
+        <p>
+            <h1 id="esp-open-sdk-on-the-raspberry-pi-4b">ESP-OPEN-SDK on the Raspberry Pi 4B</h1>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#my-environment">My Environment</a></li>
+<li><a href="#espressifs-official-sdk">Espressif&rsquo;s Official SDK</a></li>
+<li><a href="#enter-the-esp-open-sdk">Enter the ESP-OPEN-SDK</a></li>
+<li><a href="#fix-the-bash-version-issue">Fix the Bash version issue</a></li>
+<li><a href="#fix-the-isl-library-url">Fix the ISL Library URL</a></li>
+<li><a href="#fix-the-expat-version">Fix the Expat Version</a></li>
+<li><a href="#fix-a-gcccpp-compatability-issue">Fix a GCC/C++ compatability issue</a></li>
+<li><a href="#fix-a-python-internal-api-issue">Fix a Python internal API issue</a></li>
+<li><a href="#fix-the-esptool-issue">Fix the esptool.py issue</a></li>
+<li><a href="#cest-fini">C&rsquo;est Fini!</a></li>
+<li><a href="#notes">Notes</a></li>
+</ol>
+<h2 id="introduction">Introduction</h2>
+<p>Lately I&rsquo;ve been focusing on honing my skills as a developer, both in coding but also in my development environment. As a result, I write/compile/test code almost entirely on Linux VMs or my RPi via the command line (and command line tools).</p>
+<p>I&rsquo;ve had a few spare ESP-01s lying around and finally have a need for them, so I figured it was time to set up the Espressif SDK and try my hand at developing some specialized/limited firmware for them.</p>
+<p>This proved to be more challenging then I originally hoped, and I thought it might be helpful to store the issues (and fixes!) in one place. So - here we are!</p>
+<h2 id="my-environment">My Environment</h2>
+<p>These instructions have been tried and tested on a Raspberry Pi Model 4B running Debian/Bookworm (Aarch64).</p>
+<h2 id="espressifs-official-sdk">Espressif&rsquo;s Official SDK</h2>
+<p>I figured the best place to start would be the official SDK. I followed the toolchain setup and installation guide, but when I tried making the example blinky script I was immediately greeted with a strange, vague error about a misplaced parantheses.</p>
+<p>My first thought was that I had messed something up (always possible) during the installation of the toolchain or when adding the necessary tools to my system&rsquo;s PATH. On some more digging, though, I discovered that the SDK and its toolchain were compiled for x86 systems, not Arm/Aarch64. This doesn&rsquo;t seem to be noted anywhere in the Espressif documentation.</p>
+<p>What followed was rabbit hole after rabbit hole of attempts to compile the source of the error - the xtensa-lx106-elf toolchain - for Aarch64. This involved attempts at using Espressif&rsquo;s version of crosstool-NG and encountering different errors as a result of gcc versioning conflicts with other parts of the official SDK.</p>
+<p>While I&rsquo;m sure someone with more experience building/using toolchains of this kind could figure it out, I figured I might be better off trying a different approach if I ever wanted to use the ESP01 with my projects (unless I wanted to completely throw in the towel and buy an x86 laptop).</p>
+<h2 id="enter-the-esp-open-sdk">Enter the ESP-OPEN-SDK</h2>
+<p>In my research, I noticed that there were several posts about using the esp-open-sdk on Raspberry Pis. After hours of researching, compiling, fixing errors, and finding new ones, I was ready to try something new.</p>
+<p>Because the repo is unmaintained, and many of the tools are quite dated, I needed to make some updates. Luckily I&rsquo;m not the first person to try to deal with this issue in 2024 so I was able to stand on the shoulders of giants.</p>
+<p>What follows is a compilation of solutions found and developed by members of the open source community for successfully building the esp-open-sdk. I&rsquo;ve included links/references to the original solutions at the end of this post.</p>
+<p>Once you&rsquo;ve cloned the esp-open-sdk repo onto your system, you&rsquo;ll need to make the following updates to the included files.</p>
+<h3 id="fix-the-bash-version-issue">Fix the Bash version issue</h3>
+<p>There&rsquo;s a good chance your system is using a newer version of Bash (e.g. version 5 instead of 3.1).</p>
+<p>While in <code>/esp-open-sdk</code>, navigate to <code>/crosstool-NG</code> and edit the <code>configure.ac</code> file.</p>
+<p>Navigate to line 193. <code>$EGREP '^GNU bash, version (3\.[1-9]|4)')</code> needs to be updated to include your system&rsquo;s version of Bash. For me, this was version 5, so: <code>$EGREP '^GNU bash, version (3\.[1-9]|4|5)')</code>.</p>
+<h3 id="fix-the-isl-library-url">Fix the ISL library URL</h3>
+<p>The link used by crosstool-NG to download the ISL library is outdated/broken. You have two options:</p>
+<ol>
+<li>download the correct ISL version tarball yourself and slot it into <code>.build/tarballs/</code> manually, or</li>
+<li>fix the URL in 121-isl.sh.</li>
+</ol>
+<p>For the latter, navigate to <code>esp-open-sdk/crosstool-NG/scripts/build/companion_libs</code> and edit the link at line 17 to <code>https://libisl.sourceforge.io</code> instead of <code>http://isl.gforge.inria.fr</code>.</p>
+<h3 id="fix-the-expat-version">Fix the Expat version</h3>
+<p>Somewhere along the line, a vulnerability was found in the version of the expat library used with esp-open-sdk. The URL itself works, but the name of the file has changed to reflect the vulnerability. You can either:</p>
+<ol>
+<li>fix the URL to reflect the name change and download version 2.1.0 of the tool, or</li>
+<li>fix the script to use a version of Expat that addresses the vulnerability.</li>
+</ol>
+<p>If you choose the latter option, navigate to <code>esp-open-sdk/crosstool-NG/config/companion_libs</code> and open <code>expat.in</code>. Update line 19 from <code>default &quot;2.1.0&quot; if EXPAT_V_2_1_0</code> to <code>default &quot;2.5.0&quot; if EXPAT_V_2_1_0</code>.</p>
+<h3 id="fix-a-gccc-compatability-issue">Fix a GCC/C++ compatability issue</h3>
+<p>Once the Bash and URL/version issues have been fixed, you&rsquo;ll likely encountered a cpp related error in reload1.c during your first attempt to build the SDK. Specifically, there is an issue with how a variable is being incremented.</p>
+<p>Navigate to <code>esp-open-sdk/crosstool-NG/.build/src/gcc-4.8.5/gcc</code> and open reload1.c. At line 443, update <code>spill_indirect_levels++;</code> to <code>spill_indirect_levels = 1;</code>.</p>
+<p>Note: this seemed odd to me, as the updated code doesn&rsquo;t increment anything but instead just sets the variable to 1. I haven&rsquo;t dug into the code enough to know if this matters, and the fix seems to work, so for now I&rsquo;m leaning towards the &lsquo;If it ain&rsquo;t (still) broken, don&rsquo;t fix it&rsquo; camp.</p>
+<h3 id="fix-a-python-internal-api-issue">Fix a Python internal API issue</h3>
+<p>From what I could gather in various Github Issues comment chains, this error arose from an update in Python itself and not the SDK. Specifically, the crosstool-NG was using an internal-only API in Python that at some point became absolutely not-ok to use.</p>
+<p>While all of the fixes so far could be performed using a patch file(s), the changes have been short enough that doing them manually isn&rsquo;t too much trouble. Not so with this one. Several changes are required, and I recommend using Chris MacGregor&rsquo;s .patch file <a href="https://github.com/ChrisMacGregor/esp-open-sdk/blob/builds-on-Ubuntu-21.10/1000-fix-build-python3.9.patch" title="Link to patch file for Python version issue">here</a>.</p>
+<p>You might need to update the file paths in the .patch file to work with your system.</p>
+<h3 id="fix-the-esptoolpy-issue">Fix the esptool.py issue</h3>
+<p>Once you&rsquo;ve successfully built the esp-open-sdk there is still one thing you will likely need to fix. The version of esptool.py (the script used for interacting with the ESP8266) included in the SDK is very old and actually relies on Python2. I&rsquo;ve seen some workarounds and methods for updating the tool in the SDK itself, but my favourite and least intrusive fix is to use a virtual environment, then installing esptool.py via pip. I ran the following commands:</p>
+<ul>
+<li><code>python -m venv myvenv</code></li>
+<li><code>source myvenv/bin/activate</code></li>
+<li><code>pip install esptool.py</code></li>
+</ul>
+<p>You&rsquo;ll need to make sure you&rsquo;ve activated your venv whenever you want to use the esptool.py script, but so far the fix seems to be working seemlessly with the SDK.</p>
+<h3 id="cest-fini">C&rsquo;est Fini!</h3>
+<p>And you should be good to go! If you&rsquo;re still encountering errors, my suggestions would be:</p>
+<ul>
+<li>Reviewing the issues on the esp-open-sdk repo. While it&rsquo;s not maintained, there is still an active enough userbase that issues are added and solutions proposed.</li>
+<li><a href="https://github.com/ChrisMacGregor/esp-open-sdk/tree/builds-on-Ubuntu-21.10" title="Link to Chris MacGregor's fork">Reviewing Chris MacGregor&rsquo;s fork</a></li>
+<li><a href="https://github.com/andrei-gavrila/notes/blob/main/ESP8266-remote-development-esp-open-sdk-esp-open-rtos-HomeKit-on-Raspberry-Pi-from-Mabcook.md" title="Link to Andrei Gavrila's Notes">Reviewing Andrei Gavrila&rsquo;s notes</a></li>
+</ul>
+<p>These were lifesavers in my efforts - hopefully they are for you as well!</p>
+<h3 id="notes">Notes</h3>
+<p>If you found this post part-way through setting up the SDK, I highly suggest cloning a fresh version of the repo and starting from scratch.</p>
+<p>In my own attempts I discovered that, for reasons beyond my current understanding, crosstool-NG actually duplicates the .in and .sh files in a subdirectory and uses those copies when compiling/building the toolchain. This meant that my updated URL/Expat version weren&rsquo;t actually being used by the version of crosstool-NG trying to build xtensa-lx106-elf. Quite puzzling until I managed to grep and locate the duplicates. Anyways - save yourself a headache and start from scratch would be my advice. Cheers!</p>
+
+        </p>
+        
+    </div>
+
+    <div class="prev-next">
+        
+    </div>
+
+    
+    
+    <svg id="btt-button" class="arrow-logo" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512" onclick="topFunction()" title="Go to top">
+        
+        <path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/>
+    </svg>
+    
+    <script>
+        let backToTopButton = document.getElementById("btt-button");
+
+        window.onscroll = function() {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        }
+
+        function topFunction() {
+            smoothScrollToTop();
+        }
+
+        function smoothScrollToTop() {
+            const scrollToTop = () => {
+                const c = document.documentElement.scrollTop || document.body.scrollTop;
+                if (c > 0) {
+                    window.requestAnimationFrame(scrollToTop);
+                    window.scrollTo(0, c - c / 8);
+                }
+            };
+            scrollToTop();
+        }
+    </script>
+    
+</div>
+
+
+
+    
+
+        </main><footer class="footer">
+    
+    
+
+    
+    <span>&copy; 2024 Wilson Scott</span>
+    
+    <span>
+        Made with &#10084;&#65039; using <a target="_blank" href="https://github.com/526avijitgupta/gokarna">Gokarna</a>
+    </span>
+</footer>
+</body>
+</html>

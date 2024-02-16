@@ -2,9 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://wil-scott.com/categories/</loc>
+    <loc>https://wil-scott.com/cv/cv/</loc>
+    <lastmod>2024-02-13T01:07:25-08:00</lastmod>
+  </url><url>
+    <loc>https://wil-scott.com/cv/</loc>
+    <lastmod>2024-02-13T01:07:25-08:00</lastmod>
   </url><url>
     <loc>https://wil-scott.com/</loc>
+    <lastmod>2024-02-13T01:07:25-08:00</lastmod>
+  </url><url>
+    <loc>https://wil-scott.com/posts/</loc>
+    <lastmod>2024-02-08T11:49:23-08:00</lastmod>
+  </url><url>
+    <loc>https://wil-scott.com/posts/first_post/</loc>
+    <lastmod>2024-02-08T11:49:23-08:00</lastmod>
+  </url><url>
+    <loc>https://wil-scott.com/categories/</loc>
   </url><url>
     <loc>https://wil-scott.com/tags/</loc>
   </url>
