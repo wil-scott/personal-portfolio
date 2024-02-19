@@ -44,7 +44,7 @@ enableRobotsTXT = true
 
 	[[menu.main]]
 		identifier = "LinkedIn"
-		url = "https://www.linkedin.com/in/wilsonwscott/"
+		url = "https://www.linkedin.com/in/wil-scott/"
 		pre = "<span data-feather='linkedin'></span>"
 		weight = 6
 
@@ -60,7 +60,7 @@ enableRobotsTXT = true
 	description = "I write software for embedded systems." 	
 
 	socialIcons = [
-		{name = "linkedin", url = "https://www.linkedin.com/in/wilsonwscott/"},
+		{name = "linkedin", url = "https://www.linkedin.com/in/wil-scott/"},
 		{name = "github", url = "https://github.com/wil-scott"},
 	]
 	
