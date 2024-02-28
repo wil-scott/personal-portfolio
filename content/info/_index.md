@@ -29,7 +29,7 @@ At this point I was in a sort of limbo. I felt that I had a good understanding o
 
 This was quickly followed by another thought: "Because you work full-time in a career already".
 
-It wasn't an easy decision - I don't know that career change ever are - but I realized that I would regret it if I didn't try something that - on review - I clearly had a lifelong interest in.
+It wasn't an easy decision - I don't know that career changes ever are - but I realized that I would regret it if I didn't try something that - on review - I clearly had a lifelong interest in.
 
 And that pretty much sealed the deal. I charted my exit from the practice of law and started BCIT's CST program - a program with a reputation for a grueling workload. My favourite courses were on lower-level topics like Operating Systems, C, and Computer Architecture, from which my interest in embedded systems grew. I secured a spot in the Co-op position and a job as an Embedded Software Engineer at Sierra Wireless, and now I'm searching for the next opportunity to apply my passion and interest in embedded systems.
 
