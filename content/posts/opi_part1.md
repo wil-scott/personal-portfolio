@@ -4,9 +4,6 @@ date = 2024-03-19T13:16:35-07:00
 draft = false
 type = "post"
 +++
-
-# Board Bringup for Orange Pi Zero3 (Part 1)
-
 I recently purchased an Orange Pi Zero3 so that I'd have a platform for IoT-based projects I have planned. My evaluation process at the time of purchase was fairly simple:
 - this board is pretty powerful
 - this board can connect to the internet
@@ -147,9 +144,8 @@ Sfdisk is *partitioning* the block device - it splits our /dev/sdX into /dev/sdX
 ### Testing
 Eject your micro-SD card from your workstation and insert it into your Zero3. Connect your usb-to-ttl adapter to your work station and the TTL debug pins on the Zero3 (shown below). In your terminal, open a screen session at your USB-to-TTL adapter's address at baudrate 115200. 
 
-{{< image src="/images/zero3_uartpins.jpg"  alt="Zero3" width="200px" >}}
+![Zero3][/images/zero3_uartpins.jpg]
 Zero3 Debug TTL Pins
-{{< /image >}}
 
 Power on your Zero3 and you should see u-boot's output!
 
