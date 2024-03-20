@@ -29,7 +29,7 @@ Part 2 will deal with the Linux Kernel itself, while Part 3 addresses the modifi
 4. Orange Pi Zero3
 5. Power supply (USB-C Adapter)
 6. Linux environment (I used a VM running Ubuntu Server)
-7. Toolchain - creating a boot image requires quite a few packages, so run the below Linux environment has the necessary packages to complete this guide. 
+7. Toolchain - creating a boot image requires quite a few packages. Running the following command should install the majority of the packages you will need: 
 ```
 sudo apt-get -y swig python3-dev build-essential device-tree-compiler git screen
 ```
@@ -87,7 +87,7 @@ Again, you may be wondering "why not just u-boot.bin?". The reason has to do wit
 
 boot ROM -> TF-A with BL31 -> Secondary Program Loader (SPL) -> U-boot
 
-Each step prepares initializes the hardware and hands over control to the subsequent program. This is all a little low-level for our purposes (the .bin file we generated handles the nitty-gritty), but it's nice to know what's happening under the hood.
+Each step prepares the hardware and hands over control to the subsequent program. This is all a little low-level for our purposes (the .bin file we generated handles the nitty-gritty), but it's nice to know what's happening under the hood.
 
 ### Preparing our SDCard
 After connecting the SDcard to our linux system we need to identify it on our system. Because I used a USB adapter, my micro-SD card was identified as sdX (usually sda). You can run the `lsblk` command to see what block devices are available on your system.
@@ -151,9 +151,6 @@ Zero3 Debug TTL Pins
 Power on your Zero3 and you should see u-boot's output!
 
 ### To be continued!
-
-
-
 
 [1]: https://www.reddit.com/r/OrangePI/comments/16wsx2g/armbian_secret_crypto_mining/
 [2]: https://arstechnica.com/information-technology/2016/05/chinese-arm-vendor-left-developer-backdoor-in-kernel-for-android-pi-devices/
