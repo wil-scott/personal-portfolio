@@ -2,6 +2,7 @@
 title = 'Board Bringup for Orange Pi Zero3 (Part 2)'
 date = 2024-03-24T13:17:43-07:00
 draft = false
+type = "post"
 +++
 At this stage, you should have a partitioned and formatted micro-SD card with u-boot loaded on the first partition. Your project directory should look something like this:
 
