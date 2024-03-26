@@ -15,12 +15,10 @@ The first sign of trouble came when I searched for an OS that would run on the b
 
 None of the existing options seemed appealing, so I figured I'd just make a bare-minimum Linux image myself. 
 
-## Making a custom boot image for the Zero3
+## Making a custom Linux OS for the Zero3
 This is all possible due to the mainline support for the Zero3 in both u-boot and the mainline Linux kernel. While the [Sunxi-Linux wiki][3] has a very thorough, detailed guide, I found it quite difficult to navigate when I was first getting started. This guide is meant to get you from zero to command line prompt as quickly as possible.
 
-Part 1 will cover the required tools, our development environment, and creating a bootloader that we can load onto our micro-SD card.
-
-Part 2 will deal with the Linux Kernel itself, while Part 3 addresses the modifications necessary to the Linux Kernel in order to have support for an external Wifi dongle.
+Part 1 will cover the required tools, our development environment, and creating a bootloader that we can load onto our micro-SD card. Part 2 will deal with the compilation of our OS's parts - the kernel, device tree, rootfs, and modules.
 
 ### What you need
 1. USB-to-TTL adapter
@@ -125,9 +123,9 @@ A lot is happening in this command. First - blockdev --rereadpt is telling our w
 
 The sfdisk command is used for manipulating disk partitions. The `cat<<EOT |` chunk feeds the subsequent lines as input into the sfdisk command until an `EOT` is entered.
 
-1M,16M,c tells sfdisk to create a partition starting at 1 megabyte and having a total size of 16 megabytes. The third value is a hexadecimal representation of the partition's file type. In our case, 0xC represents Fat32 (LBA).
+`1M,16M,c` tells sfdisk to create a partition starting at 1 megabyte and having a total size of 16 megabytes. The third value is a hexadecimal representation of the partition's file type. In our case, `0xC` represents Fat32 (LBA).
 
-,,L tells sfdisk to use the remainder of the disk to create a second partition formatted as a Linux Filesystem. Note that, here, the L is not a number value but instead an alias for 'linux'.
+`,,L` tells sfdisk to use the remainder of the disk to create a second partition formatted as a Linux Filesystem. Note that, here, the `L` is not a number value but instead an alias for 'linux'.
 
 #### Step 4
 Now that our micro-SD card has been partitioned properly, we can format the partitions using the mkfs tool. Run the following commands:
@@ -139,10 +137,10 @@ mkfs stands for 'make filesystem'. In the above commands, we're telling mkfs to 
 
 At first glance Step 3 and Step 4 may seem to be redundant, but it comes down to the differences between sfdisk and mkfs. 
 
-Sfdisk is *partitioning* the block device - it splits our /dev/sdX into /dev/sdX1, /dev/sdX2, etc. Mkfs *formats* these partitions, creating filesystem structures that allow us to store directories, files, and so on.
+Sfdisk is *partitioning* the block device - it splits our `/dev/sdX` into `/dev/sdX1`, `/dev/sdX2`, etc. Mkfs *formats* these partitions, creating filesystem structures that allow us to store directories, files, and so on.
 
 ### Testing
-Eject your micro-SD card from your workstation and insert it into your Zero3. Connect your usb-to-ttl adapter to your work station and the TTL debug pins on the Zero3 (shown below). In your terminal, open a screen session at your USB-to-TTL adapter's address at baudrate 115200. 
+Eject your micro-SD card from your workstation and insert it into your Zero3. Connect your usb-to-ttl adapter to your work station and the TTL debug pins on the Zero3 (shown below). In your terminal, open a screen session at your USB-to-TTL adapter's address. I used a baudrate of 115200 for my connection, but that may depend on your u-boot version/settings. 
 
 {{< image src="/images/zero3_uartpins.png" alt="Zero3" width="500px" >}}
 {{< /image >}}
