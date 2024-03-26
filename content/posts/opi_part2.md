@@ -48,7 +48,7 @@ Now that the kernel is configured, we can begin the compilation process. This st
 4. Creating our Root filesystem.
 4. Installing header files.
 
-While the our image, .dtb. and modules are created with `make` commands using the Linux repo's makefile, our Root filesystem (AKA Rootfs), requires a different approach. 
+While our image, device tree binary, and modules are created with `make` commands using the Linux repo's makefile, our Root filesystem (AKA Rootfs), requires a different approach. 
 
 ### Kernel Image
 To compile the Kernel Image run this command:
