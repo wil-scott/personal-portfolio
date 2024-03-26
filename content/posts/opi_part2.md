@@ -5,12 +5,12 @@ draft = false
 type = "post"
 +++
 At this stage, you should have a partitioned and formatted micro-SD card with u-boot loaded on the first partition. Your project directory should look something like this:
-
+```
 opi-image/
 | - - linux/
 | - - u-boot/
 | - - arm-trusted-firmware/
-
+```
 Please note that these instructions assume you are running on arm64 architecture.
 
 ## Configure the Kernel
@@ -35,7 +35,7 @@ At this menu, scroll down to "Realtek rtlwifi family of devices". It should look
 {{< /image >}}
 
 Press "M" to include the rtlwifi family drivers as modules, then navigate into the submenu. To be on the safe side, I selected all drivers to be included as modules. That said, if you are absolutely certain about which chipset your device uses, you can be more selective. My menu looked like this:
-{{< image src="/images/Menuconfig-realtek-2.png" alt="Kernel config menu image" width="300px" >}}
+{{< image src="/images/menuconfig-realtek-2.png" alt="Kernel config menu image" width="300px" >}}
 {{< /image >}}
 
 Now, exit out of the menu and, when prompted, select 'yes' to save your configuration options.

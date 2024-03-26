@@ -49,12 +49,12 @@ git clone git://git.denx.de/u-boot.git
 git clone https://github.com/ARM-software/arm-trusted-firmware.git
 ```
 After, your project structure should look like this:
-
+```
 opi-image/
 | - - linux/
 | - - u-boot/
 | - - arm-trusted-firmware/
-
+```
 ### Trusted Firmware-A
 #### What did I just clone?
 TF-A is responsible for initializing our board's hardware in a secure manner. In our case, the H616/H618's architecutre is ARMv8, so TF-A uses an Exception Level 3 (EL3) firmware layer to securely set up a space for u-boot to run at a lower Exception Level.
