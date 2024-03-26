@@ -31,7 +31,7 @@ Navigate to the following menu:
 Device drivers ->  Network device support -> Wireless Lan
 ```
 At this menu, scroll down to "Realtek rtlwifi family of devices". It should look something like this:
-{{< image src="/images/Menuconfig-realtek-1.png" alt="Kernel config menu image" width="300px" >}}
+{{< image src="/images/menuconfig-realtek-1.png" alt="Kernel config menu image" width="300px" >}}
 {{< /image >}}
 
 Press "M" to include the rtlwifi family drivers as modules, then navigate into the submenu. To be on the safe side, I selected all drivers to be included as modules. That said, if you are absolutely certain about which chipset your device uses, you can be more selective. My menu looked like this:
