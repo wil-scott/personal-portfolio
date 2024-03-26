@@ -196,5 +196,31 @@ Insert the Micro-SD Card into the Zero3, power it on, and watch the custom linux
 
 Hopefully you found this to be a helpful guide. Thanks for reading!
 
+### ETA (Mar 26 2024)
+I realized after publishing that I hadn't gone through how to enable the module support necessary to use the USB Wifi Dongle. These instructions assume you are logged in as root on your Zero3.
+
+You can view your running modules by running:
+```
+lsmod
+```
+Check which chipsets you have module support for:
+```
+ls /lib/modules/$(uname -r)/kernel/drivers/net/wireless/
+```
+When I run this command, I see the following output:
+```
+user@orange:~$ ls /lib/modules/$(uname -r)/kernel/drivers/net/wireless/
+ath  broadcom  marvell  mediatek  realtek  rsi  ti
+```
+I'm looking for the rtl8xxxu driver, which supports certain realtek chipsets, so when I run `ls` in the realtek subdirectory, I see the following:
+```
+rtl818x rtl8xxxu rtlwifi
+```
+Now that I have confirmed that I have the required module, I can load it by running the following command:
+```
+modprobe rtl8xxxu
+```
+That should be it! You can confirm that it loaded properly buy running the `lsmod` command again, but now your USB WiFi dongle should be automatically recognized by your OS when plugged in.
+
 [1]: https://wireless.wiki.kernel.org/welcome
 [2]: https://wireless.wiki.kernel.org/en/users/drivers/rtl819x
