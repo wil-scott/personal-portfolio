@@ -4,7 +4,7 @@ date = 2024-03-26T16:30:10-07:00
 draft = false
 type = "post"
 +++
-After successfully bringing up my Zero3 I wanted to learn more about kernel module development. While following along with an introductory tutorial I wrote a makefile to handle the compilation of `.c` files into `.ko` files that I could load. The makefile was fairly simple - it had a single command to :
+After successfully bringing up my Zero3 I wanted to learn more about kernel module development. While following along with an introductory tutorial I wrote a makefile to handle the compilation of `.c` files into `.ko` files that I could load. The makefile was fairly simple - it had a single recipe for compiling the module:
 ```
 obj-m += mymodule.o
 
