@@ -20,7 +20,7 @@ make[1]: *** No rule to make target 'modules'.  Stop.
 make[1]: Leaving directory '/host_machine/include'
 make: *** [Makefile:4: all] Error 2
 ```
-On a hunch, I checked the symlink at /lib/modules/6.8.0/build and saw that it was pointing to a directory on the host machine I used to compile the kernel.
+On a hunch, I checked the symlink at /lib/modules/6.8.0/build and saw that it was pointing to a directory on the host machine (AKA a completely different system) I used to compile the kernel.
 
 {{< image src="/images/confused.jpg"  alt="A confused guy" width="450px" >}}
 Artist's recreation of me trying to understand how this happened.
