@@ -40,13 +40,15 @@ To start, we'll need a place to store the Linux repo and U-Boot repo. I created 
 
 In order to create our boot image, we'll need a bootloader, kernel, device tree, and root filesystem. To make these components, we'll need the necessary repositories.
 
-In `opi-image/`, we can clone Linus's repo, the u-boot repo, and the ARM trusted firmware repo:
+In `opi-image/`, we can clone Linus's repo, the u-boot repo, the ARM trusted firmware repo, and the linux-firmware repo:
 ```
 git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
 
 git clone git://git.denx.de/u-boot.git
 
 git clone https://github.com/ARM-software/arm-trusted-firmware.git
+
+git clone git://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git linux-firmware
 ```
 After, your project structure should look like this:
 ```
@@ -54,6 +56,7 @@ opi-image/
 | - - linux/
 | - - u-boot/
 | - - arm-trusted-firmware/
+| - - linux-firmware/
 ```
 ### Trusted Firmware-A
 #### What did I just clone?
