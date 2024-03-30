@@ -29,7 +29,7 @@ Part 1 will cover the required tools, our development environment, and creating 
 6. Linux environment (I used a VM running Ubuntu Server)
 7. Toolchain - creating a boot image requires quite a few packages. Running the following command should install the majority of the packages you will need: 
 ```
-sudo apt-get -y swig python3-dev build-essential device-tree-compiler git screen
+sudo apt-get -y install swig python3-dev build-essential device-tree-compiler git screen bison flex python3-setuptools libssl-dev dosfstools libncurses-dev bc rsync
 ```
 I have tried to make this an exhaustive list of necessary packages, but your mileage may vary.
 
@@ -62,13 +62,13 @@ TF-A is responsible for initializing our board's hardware in a secure manner. In
 My understanding of this process is still very high level, so if you're curious about the work being done by TF-A, [the documentation][4] is thorough and has a specific entry for the Allwinner H616 (and other Allwinner chips).
 
 #### Step 1
-Navigate into arm-trusted-firmware/ and run the following command:
+Navigate into `arm-trusted-firmware/` and run the following command:
 ```
 make CROSS_COMPILE=aarch64-linux-gnu- PLAT=sun50i_h616 DEBUG=1 bl31
 ```
-The arguments in this make command are largely self-explanatory with the exception of 'bl31'.
+The arguments in this make command are largely self-explanatory with the exception of `bl31`.
 
-Per the TF-A documentation, bl31 actually stands for boot loader stage 3-1. BL31 is responsible for, among other things, "passing control to a normal world BL image". Frankly, I had a hard time digging up information about what this actually meant. Based on what I found, my current best guess is that, in our case, we are using boot loader stage 3-1 to pass control from our TF-A firmware over to the actual u-boot image that we generate in later steps.
+Per the TF-A documentation, `bl31` actually stands for boot loader stage 3-1. `bl31` is responsible for, among other things, "passing control to a normal world BL image". Frankly, I had a hard time digging up information about what this actually meant. Based on what I found, my current best guess is that, in our case, we are using boot loader stage 3-1 to pass control from our TF-A firmware over to the actual u-boot image that we generate in later steps.
 
 #### Step 2
 Once complete, navigate into u-boot/ and run the following command:
@@ -82,9 +82,9 @@ make CROSS_COMPILE=aarch64-linux-gnu- BL31=../arm-trusted-firmware/build/sun50i_
 The ouput of this command should include a file called `u-boot-sunxi-with-spl.bin`. 
 
 Again, you may be wondering "why not just u-boot.bin?". The reason has to do with our board's boot flow. It's easy to think of the process as being "power on -> load u-boot", but there is quite a bit more happening on our ARMv8 board. In our case, the process looks more like this:
-
+```
 boot ROM -> TF-A with BL31 -> Secondary Program Loader (SPL) -> U-boot
-
+```
 Each step prepares the hardware and hands over control to the subsequent program. This is all a little low-level for our purposes (the .bin file we generated handles the nitty-gritty), but it's nice to know what's happening under the hood.
 
 ### Preparing our SDCard
@@ -93,18 +93,18 @@ After connecting the SDcard to our linux system we need to identify it on our sy
 #### Step 1
 Once you have identified your micro-SD card, we should wipe the first section of it to ensure that any existing partition table is removed:
 ```
-dd if=/dev/zero of=/dev/sdX bs=1M count=1
+sudo dd if=/dev/zero of=/dev/sdX bs=1M count=1
 ```
 The dd command is used for copying data from one file to another. In the above command, we're copying a blocksize of 1 Megabyte (bs=1M) from /dev/zero (input file) to /dev/sdX (output file) one time (count=1).
 
 #### Step 2
 Once that is complete, we can write our bootloader to it:
 ```
-dd if=u-boot-sunxi-with-spl.bin of=/dev/sdX bs=1024 seek=8
+sudo dd if=u-boot-sunxi-with-spl.bin of=/dev/sdX bs=1024 seek=8
 ```
-This time we use the dd command to copy the contents of our u-boot .bin file onto our micro-SD card. The 'count=' parameter isn't set, meaning the copying will continue until the input file is fully copied. 
+This time we use the dd command to copy the contents of our u-boot `.bin` file onto our micro-SD card. The 'count=' parameter isn't set, meaning the copying will continue until the input file is fully copied. 
 
-The Seek argument is used as an offset, telling the dd command how many blocks to 'skip' from the start of the output file before writing the input file data. Because we've set the blocksize to 1024 bytes, our dd command will begin copying our .bin file 8 * 1024 bytes into our micro-SD card.
+The Seek argument is used as an offset, telling the dd command how many blocks to 'skip' from the start of the output file before writing the input file data. Because we've set the blocksize to 1024 bytes, our dd command will begin copying our `.bin` file 8 * 1024 bytes into our micro-SD card.
 
 Though the u-boot documentation is light on this issue, the purpose of the 'gap' (8 blocks) likely relates to the leaving space for our memory's partition table.
 
@@ -115,23 +115,23 @@ Run the following command, updating the reference to your micro-SD card as neces
 ```
 sudo blockdev --rereadpt /dev/sdX
 cat <<EOT | sudo sfdisk /dev/sdX
-1M,16M,c
+1M,64M,c
 ,,L
 EOT
 ```
-A lot is happening in this command. First - blockdev --rereadpt is telling our workspace kernel to re-read the block device located at /dev/sdX. Because subsequent commands will be changing the partition table on the block device, we want our workspace to have a current snapshot of the block device's partitions.
+A lot is happening in this command. First - `blockdev --rereadpt` is telling our workspace kernel to re-read the block device located at `/dev/sdX`. Because subsequent commands will be changing the partition table on the block device, we want our workspace to have a current snapshot of the block device's partitions.
 
 The sfdisk command is used for manipulating disk partitions. The `cat<<EOT |` chunk feeds the subsequent lines as input into the sfdisk command until an `EOT` is entered.
 
-`1M,16M,c` tells sfdisk to create a partition starting at 1 megabyte and having a total size of 16 megabytes. The third value is a hexadecimal representation of the partition's file type. In our case, `0xC` represents Fat32 (LBA).
+`1M,16M,c` tells sfdisk to create a partition starting at 1 megabyte and having a total size of 64 megabytes. The third value is a hexadecimal representation of the partition's file type. In our case, `0xC` represents Fat32 (LBA).
 
 `,,L` tells sfdisk to use the remainder of the disk to create a second partition formatted as a Linux Filesystem. Note that, here, the `L` is not a number value but instead an alias for 'linux'.
 
 #### Step 4
 Now that our micro-SD card has been partitioned properly, we can format the partitions using the mkfs tool. Run the following commands:
 ```
-mkfs.vfat /dev/sdaX1
-mkfs.ext4 /dev/sdaX2
+sudo mkfs.vfat /dev/sdaX1
+sudo mkfs.ext4 /dev/sdaX2
 ```
 mkfs stands for 'make filesystem'. In the above commands, we're telling mkfs to format our first partition as VFat, and our second as Ext4.
 
