@@ -31,7 +31,7 @@ We can use the `device-tree-compiler` tool to work with device tree files, inclu
 
 On my system, the .dtb (device tree binary file) is stored in the `/boot` directory. The following commands allow us to see a human-readable version of it:
 ```
-sudo apt-get install device-tree-compiler```
+sudo apt-get install device-tree-compiler
 dtc -I dtb -O dts -o - /boot/device_tree.dtb
 ```
 The first command installs the tool. The second command tells the tool that our input file format (`-I`) is a `.dtb` file, the output file format (`-O`) should be a `.dts` file, and the output file (`-o`) should be `stdout`. The last parameter is the location of our input .dtb file.
@@ -92,8 +92,6 @@ We can amend our system's device tree by creating what is called a device tree o
     };
 };
 ```
-The 
-
 You can find a copy of the .dts file I used [here][2]. In your working directory, can compile the source file into a binary file with the following command:
 ```
 dtc -@ -I dts -O dtb -o expansion-board-overlay.dtbo expansion-board-overlay.dts
