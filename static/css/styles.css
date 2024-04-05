@@ -45,50 +45,24 @@
     opacity: 1;
 }
 
-/* .box .title {
+.box .title {
     padding: 10px;
     position: absolute;
     bottom: 0;
     width: 100%;
     text-align: center;
-} */
+    z-index: 1; /* Ensure title is above overlay */
+}
 
 .box .summary {
     display: none;
 }
 
-/* .box:hover .summary {
-    display: block;
-    padding: 20px;
-} */
-
-.box::before {
-    content: attr(data-title);
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding: 10px;
-    text-align: center;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    z-index: 1; 
-    opacity: 1; 
+.box:hover .title {
+    display: none; /* Hide title on hover */
 }
 
-.box:hover::before {
-    opacity: 0; /* Hide title on hover */
-}
-
-.box:hover::after {
-    content: attr(data-summary);
-    display: block;
+.box:hover .summary {
+    display: block; /* Show summary on hover */
     padding: 20px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    text-align: center;
 }
