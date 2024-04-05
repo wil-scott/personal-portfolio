@@ -6,7 +6,7 @@ type = "post"
 +++
 The Orange Pi Zero3 includes 13 GPIOs dedicated to an expansion shield (pictured below).
 
-{{< image src="/images/device-tree-overlay/zero3_expander.png"  alt="Zero3 Expansion Shield" width="450px" >}}
+{{< image src="/images/device-tree-overlay/expander.png"  alt="Zero3 Expansion Shield" width="450px" >}}
 {{< /image >}}
 
 However, the first time I tried using one of the USB ports on it I got no response at all from the system. This post outlines the steps necessary to enable the 13-pin expansion shield on the Zero3.
