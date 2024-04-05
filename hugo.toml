@@ -1,4 +1,5 @@
-baseURL = 'https://wil-scott.com/'
+baseURL = ""
+relativeURLs = "True"
 defaultContentLanguage = "en"
 languageCode = "en-us"
 title = "Hi! I'm Wilson."
