@@ -3,7 +3,7 @@ date = 2024-02-15T14:32:59-08:00
 draft = false
 type = "page"
 +++
-{{< image src="/images/about-me.png" alt="avatar" width="200px" >}}
+{{< image src="/images/info/about-me.png" alt="avatar" width="200px" >}}
 {{< /image >}}
 
 Hi! I'm Wilson - a lawyer-turned-software developer.
@@ -17,7 +17,7 @@ Great question.
 
 Tech has been a lifelong passion of mine. I still remember messing around with my family's Apple Macintosh Classic, trying to learn as much as possible about it.
 
-{{< image src="/images/Macintosh_classic.jpg"  alt="An old mac" width="200px" >}}
+{{< image src="/images/info/Macintosh_classic.jpg"  alt="An old mac" width="200px" >}}
 Endless hours were spent playing Shufflepuck Cafe on this thing.
 {{< /image >}}
 

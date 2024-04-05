@@ -6,7 +6,7 @@ type = "post"
 +++
 The Orange Pi Zero3 includes 13 GPIOs dedicated to an expansion shield (pictured below).
 
-{{< image src="/images/zero3_expander.png"  alt="Zero3 Expansion Shield" width="450px" >}}
+{{< image src="/images/device-tree-overlay/zero3_expander.png"  alt="Zero3 Expansion Shield" width="450px" >}}
 {{< /image >}}
 
 However, the first time I tried using one of the USB ports on it I got no response at all from the system. This post outlines the steps necessary to enable the 13-pin expansion shield on the Zero3.
@@ -16,7 +16,7 @@ We first need to figure out how the 13 expansion GPIOs are connected to our SOC.
 
 Section 2.2.10.1 of the datasheet lists 4 USB peripherals on the H616/618, which matches with the one onboard Type-A USB port, the onboard Type-C USB port, and the two Type-A USB ports on the expansion shield. Section 2.2.10.6 describes the CIR sensor that is also present on the expansion shield. Section 3 of the data sheet set out the memory-mapped addresses for the USB ports as well:
 
-{{< image src="/images/z3-usb-maddr.png"  alt="usb memory addresses" width="450px" >}}
+{{< image src="/images/device-tree-overlay/z3-usb-maddr.png"  alt="usb memory addresses" width="450px" >}}
 {{< /image >}}
 
 ## Comparing this information to the Zero3's Device Tree

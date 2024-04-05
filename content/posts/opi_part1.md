@@ -145,7 +145,7 @@ Sfdisk is *partitioning* the block device - it splits our `/dev/sdX` into `/dev/
 ### Testing
 Eject your micro-SD card from your workstation and insert it into your Zero3. Connect your usb-to-ttl adapter to your work station and the TTL debug pins on the Zero3 (shown below). In your terminal, open a screen session at your USB-to-TTL adapter's address. I used a baudrate of 115200 for my connection, but that may depend on your u-boot version/settings. 
 
-{{< image src="/images/zero3_uartpins.png" alt="Zero3" width="500px" >}}
+{{< image src="/images/opi_part1/zero3_uartpins.png" alt="Zero3" width="500px" >}}
 {{< /image >}}
 Zero3 Debug TTL Pins
 

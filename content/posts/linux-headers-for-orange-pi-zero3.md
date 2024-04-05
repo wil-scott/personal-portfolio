@@ -22,7 +22,7 @@ make: *** [Makefile:4: all] Error 2
 ```
 On a hunch, I checked the symlink at `/lib/modules/6.8.0/build` and saw that it was pointing to a directory on the host machine (AKA a completely different system) I used to compile the kernel.
 
-{{< image src="/images/confused.jpg"  alt="A confused guy" width="450px" >}}
+{{< image src="/images/linux-headers-for-orange-pi-zero3/confused.jpg"  alt="A confused guy" width="450px" >}}
 Artist's recreation of me trying to understand how this happened.
 {{< /image >}}
 
@@ -43,7 +43,7 @@ Ok so...we're making progress. I confirmed that I installed the header files pro
 
 On a whim, I decided to check where the `build` symlink pointed to on a (to my knowledge) fully functioning Linux system: my raspberry pi. Here, when I checked the symlink for `build` it actually pointed to `/usr/src/{Kernel Version}`. "Ok", I thought, "so I just need to point the symlink at /usr/src/ on my Zero3". Before updating the symlink I decided to check what was in `/usr/src/` on my Zero3 and found...nothing.
 
-{{< image src="/images/still_confused.jpg"  alt="A different confused guy" width="450px" >}}
+{{< image src="/images/linux-headers-for-orange-pi-zero3/still_confused.jpg"  alt="A different confused guy" width="450px" >}}
 {{< /image >}}
 
 At this point I figured I was either losing my mind or the Linux Kernel developers were conspiring against me to pull off a pretty awesome prank.
