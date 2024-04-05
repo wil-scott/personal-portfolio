@@ -51,14 +51,23 @@
     bottom: 0;
     width: 100%;
     text-align: center;
+    z-index: 1;
 }
 
 .box .summary {
     display: none;
+    position: absolute; 
+    top: 100%; 
+    left: 0;
+    width: 100%;
+    text-align: center;
 }
 
 .box:hover .summary {
-    display: block;
+    display: block; 
+    top: 0; 
+    background: rgba(0, 0, 0, 0.5); 
     padding: 20px;
 }
+
 
