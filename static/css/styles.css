@@ -9,7 +9,14 @@
     position: relative;
     overflow: hidden;
     border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Semi-transparent white border */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), /* Main shadow */
+                0 0 0 5px rgba(0, 0, 0, 0.2); /* Inner shadow for raised effect */
+    transition: transform 0.3s ease-in-out; /* Smooth transition */
+}
+
+.box:hover {
+    transform: translateY(-5px) scale(1.05); /* Move up slightly and scale up on hover */
 }
 
 .box img {
