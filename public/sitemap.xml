@@ -2,23 +2,40 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://wil-scott.com/cv/cv/</loc>
+    <loc>/</loc>
+    <lastmod>2024-03-27T21:25:35-07:00</lastmod>
+  </url><url>
+    <loc>/posts/orange-pi-zero3-device-tree-overlay/</loc>
+    <lastmod>2024-03-27T21:25:35-07:00</lastmod>
+  </url><url>
+    <loc>/posts/</loc>
+    <lastmod>2024-03-27T21:25:35-07:00</lastmod>
+  </url><url>
+    <loc>/posts/linux-headers-for-orange-pi-zero3/</loc>
+    <lastmod>2024-03-26T16:30:10-07:00</lastmod>
+  </url><url>
+    <loc>/posts/opi_part2/</loc>
+    <lastmod>2024-03-24T13:17:43-07:00</lastmod>
+  </url><url>
+    <loc>/posts/opi_part1/</loc>
+    <lastmod>2024-03-19T13:16:35-07:00</lastmod>
+  </url><url>
+    <loc>/projects/</loc>
+    <lastmod>2024-02-15T16:54:25-08:00</lastmod>
+  </url><url>
+    <loc>/info/</loc>
+    <lastmod>2024-02-15T14:32:59-08:00</lastmod>
+  </url><url>
+    <loc>/cv/</loc>
     <lastmod>2024-02-13T01:07:25-08:00</lastmod>
   </url><url>
-    <loc>https://wil-scott.com/cv/</loc>
-    <lastmod>2024-02-13T01:07:25-08:00</lastmod>
-  </url><url>
-    <loc>https://wil-scott.com/</loc>
-    <lastmod>2024-02-13T01:07:25-08:00</lastmod>
-  </url><url>
-    <loc>https://wil-scott.com/posts/</loc>
+    <loc>/posts/first_post/</loc>
     <lastmod>2024-02-08T11:49:23-08:00</lastmod>
   </url><url>
-    <loc>https://wil-scott.com/posts/first_post/</loc>
-    <lastmod>2024-02-08T11:49:23-08:00</lastmod>
+    <loc>/index-about/</loc>
   </url><url>
-    <loc>https://wil-scott.com/categories/</loc>
+    <loc>/categories/</loc>
   </url><url>
-    <loc>https://wil-scott.com/tags/</loc>
+    <loc>/tags/</loc>
   </url>
 </urlset>
