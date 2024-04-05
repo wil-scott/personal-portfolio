@@ -32,7 +32,7 @@ Navigate to the following menu:
 Device drivers ->  Network device support -> Wireless Lan
 ```
 At this menu, scroll down to "Realtek 802.11n USB wireless chips support". Include it as a module (press M while the option is highlighted). A new option for including untested 8xxx USB devices should appear. Include this option too. It should look something like this:
-{{< image src="/images/menuconfig-realtek-1.png" alt="Kernel config menu image" width="300px" >}}
+{{< image src="/images/opi_part2/menuconfig-realtek-1.png" alt="Kernel config menu image" width="300px" >}}
 {{< /image >}}
 
 Now, exit out of the menu and, when prompted, select 'yes' to save your configuration options.
