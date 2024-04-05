@@ -1,5 +1,3 @@
-/* style for box */
-
 /* Grid container styling */
 .boxes-container {
     display: grid;
@@ -17,52 +15,39 @@
 .box img {
     width: 100%;
     height: auto;
-    transition: transform 0.5s;
+    transition: transform 0.5s; /* Add transition for zoom effect */
 }
 
 .box:hover img {
-    transform: scale(1.1);
-}
-
-.box .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.box:hover .overlay {
-    opacity: 1;
+    transform: scale(1.1); /* Zoom effect on hover */
 }
 
 .box .title {
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    text-align: center;
     padding: 10px;
     position: absolute;
     bottom: 0;
-    width: 100%;
-    text-align: center;
-    z-index: 1; /* Ensure title is above overlay */
+    left: 0;
+    z-index: 1;
+    color: white; /* Ensure title text is visible */
 }
 
 .box .summary {
     display: none;
-}
-
-.box:hover .title {
-    display: none; /* Hide title on hover */
+    position: absolute;
+    top: 50%; /* Adjusted positioning */
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white; /* Ensure summary text is visible */
+    padding: 20px;
+    text-align: center;
+    z-index: 1;
 }
 
 .box:hover .summary {
-    display: block; /* Show summary on hover */
-    padding: 20px;
+    display: block;
 }
