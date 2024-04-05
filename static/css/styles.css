@@ -71,7 +71,12 @@
     text-align: center;
     background: rgba(0, 0, 0, 0.5);
     color: white;
-    z-index: 1; /* Ensure title is above overlay */
+    z-index: 1; 
+    opacity: 1; 
+}
+
+.box:hover::before {
+    opacity: 0; /* Hide title on hover */
 }
 
 .box:hover::after {
