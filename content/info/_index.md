@@ -10,7 +10,7 @@ Hi! I'm Wilson - a lawyer-turned-software developer.
 
 In my past life, I practiced corporate/commercial law while owning and operating a firm alongside my business partner.
 
-Now, I write software - mostly for embedded systems - and tinker with my personal projects.
+Now, I write software and tinker with my personal projects. My main areas of interest are automation, IoT, edge computing, AI/ML, and embedded systems.
 
 ### How on Earth did that happen?
 Great question. 
@@ -29,9 +29,9 @@ At this point I was in a sort of limbo. I felt that I had a good understanding o
 
 This was quickly followed by another thought: "Because you work full-time in a career already".
 
-It wasn't an easy decision - I don't know that career changes ever are - but I realized that I would regret it if I didn't try something that - on review - I clearly had a lifelong interest in.
+It wasn't an easy decision - I don't know that career changes ever are - but I realized that I would regret it if I didn't try something that I had a lifelong interest in.
 
-And that pretty much sealed the deal. I charted my exit from the practice of law and started BCIT's CST program - a program with a reputation for a grueling workload. My favourite courses were on lower-level topics like Operating Systems, C, and Computer Architecture, from which my interest in embedded systems grew. I secured a spot in BCIT's Co-op program and a job as an Embedded Software Engineer at Sierra Wireless.
+And that pretty much sealed the deal. I charted my exit from the practice of law, started BCIT's CST program, secured a spot in BCIT's Co-op program where I secured a job as an Embedded Software Engineer at Sierra Wireless, and graduated in December 2023. 
 
 Currently, I'm searching for the next opportunity to apply my passion and interest in software development.
 

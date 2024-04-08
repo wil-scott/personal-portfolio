@@ -57,7 +57,7 @@ enableRobotsTXT = true
 
 	avatarSize = "size-l"
 
-	description = "I write software for embedded systems." 	
+	description = "Software developer, tinkerer, single-board computer enthusiast." 	
 
 	socialIcons = [
 		{name = "linkedin", url = "https://www.linkedin.com/in/wil-scott/"},
