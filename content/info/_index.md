@@ -31,7 +31,7 @@ This was quickly followed by another thought: "Because you work full-time in a c
 
 It wasn't an easy decision - I don't know that career changes ever are - but I realized that I would regret it if I didn't try something that I had a lifelong interest in.
 
-And that pretty much sealed the deal. I charted my exit from the practice of law, started BCIT's CST program, secured a spot in BCIT's Co-op program where I secured a job as an Embedded Software Engineer at Sierra Wireless, and graduated in December 2023. 
+And that pretty much sealed the deal. I charted my exit from the practice of law, started BCIT's CST program, secured a spot in BCIT's Co-op program through which I worked as an Embedded Software Engineer at Sierra Wireless, and graduated in December 2023. 
 
 Currently, I'm searching for the next opportunity to apply my passion and interest in software development.
 
