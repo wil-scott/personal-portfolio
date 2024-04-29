@@ -5,8 +5,11 @@ draft = false
 type = "page"
 +++
 {{< boxes-container >}}
+
+    {{< box image="/images/projects/opz3.png" alt="an orange pi zero 3" title="Orange Pi Zero3 Boot Wizard" summary="A Python tool that automates the configuration of a target micro-sd card and creates a bootable Linux Image on it. " link="https://github.com/wil-scott/Zero3-Boot-Wizard" >}}
+
     {{< box image="/images/projects/tabletop-car.jpg" alt="a vehicle" title="Tabletop Vehicle" summary="An edge-detecting vehicle powered by the AVR ATMEGA328p, complete with I2C driver and L298N module." link="https://github.com/wil-scott/tabletop-vehicle-project" >}}
 
-    {{< box image="/images/projects/opz3.png" alt="an orange pi zero 3" title="Automated Linux Config Tool" summary="A Python tool that automates the configuration of a target micro-sd card and creates a bootable Linux Image on it. " link="https://github.com/wil-scott/opz3_autoconfig_tool" >}}
+
 
 {{< /boxes-container >}}
