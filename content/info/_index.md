@@ -15,7 +15,7 @@ Now, I write software and tinker with my personal projects. My main areas of int
 ### How on Earth did that happen?
 Great question. 
 
-Tech has been a lifelong passion of mine. I still remember messing around with my family's Apple Macintosh Classic, trying to learn as much as possible about it.
+Tech has been a lifelong interest of mine. I still remember messing around with my family's Apple Macintosh Classic, trying to learn as much as possible about it.
 
 {{< image src="/images/info/Macintosh_classic.jpg"  alt="An old mac" width="200px" >}}
 Endless hours were spent playing Shufflepuck Cafe on this thing.
@@ -33,5 +33,5 @@ It wasn't an easy decision - I don't know that career changes ever are - but I r
 
 And that pretty much sealed the deal. I charted my exit from the practice of law, started BCIT's CST program, secured a spot in BCIT's Co-op program through which I worked as an Embedded Software Engineer at Sierra Wireless, and graduated in December 2023. 
 
-Currently, I'm searching for the next opportunity to apply my passion and interest in software development.
+Currently, I'm searching for the next opportunity to apply my interest in software development.
 
