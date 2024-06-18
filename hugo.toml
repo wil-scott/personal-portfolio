@@ -62,7 +62,7 @@ enableRobotsTXT = true
 	socialIcons = [
 		{name = "linkedin", url = "https://www.linkedin.com/in/wil-scott/"},
 		{name = "github", url = "https://github.com/wil-scott"},
-        {name = "cloud-drizzle", url = "https://tryhackme.com/p/0xVarro#"}
+        {name = "cloud-drizzle", url = "https://tryhackme.com/p/0xVarro#"},
 	]
 	
 	accentColor = "#FF4D4D"
