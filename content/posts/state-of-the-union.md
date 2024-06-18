@@ -2,6 +2,7 @@
 title = 'State of the Union'
 date = 2024-06-17T01:06:53-07:00
 draft = false
+type = "post"
 +++
 So it's been a while since my last post. I had a few life things happening and simultaneously got side-tracked from my last project by a new-ish, and rapidly growing, interest in cybersecurity. I've been able to re-focus recently and on the tail of finishing a functional (if somewhat buggy - writing code for a program that relies heavily on async serial communication can be a real pain, so I've learned) version 1.0 of that project, I thought that it would be good to plan out my next steps. Essentially my own personal SOTU speech.
 
