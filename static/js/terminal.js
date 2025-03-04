@@ -18,10 +18,8 @@ const filesystem = {
 │           Wilson Scott - Software Engineer      │
 └─────────────────────────────────────────────────┘
 
-I'm a software engineer specializing in C++ and embedded systems
-development with experience in Python and machine learning.
-With a unique background spanning both technical and legal fields,
-I bring a versatile approach to solving complex problems.
+I'm a software engineer specializing in C++, Python, and machine learning, with a keen interest in APIs and tailored data solutions.
+My unique background in both technical and legal fields allows me to approach complex problems with a versatile perspective.
 
 My experience includes developing automation features for 3D scanning
 software, creating tools for embedded devices, and managing complex
