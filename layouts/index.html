@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta name="generator" content="Hugo 0.145.0"><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Wilson Scott - Terminal</title>
@@ -9,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
-     
+    /* Base styles */
     * {
       margin: 0;
       padding: 0;
@@ -29,7 +28,7 @@
       align-items: center;
     }
     
-     
+    /* Terminal window */
     #terminal-window {
       width: 85%;
       max-width: 850px;
@@ -42,7 +41,7 @@
       background-color: #000;
     }
     
-     
+    /* Title bar */
     #title-bar {
       background: linear-gradient(to bottom, #3a3a3a, #2a2a2a);
       padding: 8px 15px;
@@ -75,7 +74,7 @@
       user-select: none;
     }
     
-     
+    /* Terminal container */
     #terminal {
       flex-grow: 1;
       padding: 15px;
@@ -85,7 +84,7 @@
       scroll-behavior: smooth;
     }
     
-     
+    /* Scan line effect */
     #terminal::after {
       content: "";
       position: absolute;
@@ -103,22 +102,22 @@
       opacity: 0.15;
     }
     
-     
+    /* Terminal output */
     #output {
       margin-bottom: 10px;
       white-space: pre-wrap;
       text-shadow: 0 0 2px rgba(51, 255, 51, 0.4);
-      overflow-anchor: none;  
+      overflow-anchor: none; /* Prevents browser's automatic scrolling behavior */
     }
     
-     
+    /* For auto-scrolling behavior */
     #scroll-anchor {
       height: 1px;
       width: 100%;
       overflow-anchor: auto;
     }
     
-     
+    /* Input line */
     #input-line {
       display: flex;
       align-items: center;
@@ -133,7 +132,7 @@
       text-shadow: 0 0 2px rgba(51, 255, 51, 0.4);
     }
     
-     
+    /* Input styling with hidden caret */
     #userInput {
       background: transparent;
       border: none;
@@ -143,12 +142,12 @@
       outline: none;
       flex-grow: 1;
       text-shadow: 0 0 2px rgba(51, 255, 51, 0.4);
-      caret-color: transparent;  
+      caret-color: transparent; /* Hide default caret */
       padding: 0;
       margin: 0;
     }
     
-     
+    /* Custom cursor that follows the input */
     .cursor-container {
       position: relative;
       display: inline-block;
@@ -166,7 +165,7 @@
       box-shadow: 0 0 2px rgba(51, 255, 51, 0.4);
     }
     
-     
+    /* Styling for different output types */
     .error { color: #ff5f57; text-shadow: 0 0 2px rgba(255, 95, 87, 0.4); }
     .success { color: #28ca41; text-shadow: 0 0 2px rgba(40, 202, 65, 0.4); }
     .file { color: #33ff33; }
@@ -175,7 +174,7 @@
     .highlight { background-color: rgba(51, 255, 51, 0.2); padding: 0 3px; }
     .dim { opacity: 0.7; }
     
-     
+    /* ASCII art and section headers */
     .ascii-art {
       color: #33ff33;
       font-family: monospace;
@@ -191,13 +190,13 @@
       font-weight: bold;
     }
     
-     
+    /* Animations */
     @keyframes blink {
       0%, 49% { opacity: 1; }
       50%, 100% { opacity: 0; }
     }
     
-     
+    /* Hide scrollbar but keep functionality */
     #terminal::-webkit-scrollbar {
       width: 8px;
     }
@@ -211,13 +210,13 @@
       border-radius: 4px;
     }
     
-     
+    /* Selection styling */
     ::selection {
       background: rgba(51, 255, 51, 0.3);
       color: #fff;
     }
     
-     
+    /* Responsive design */
     @media (max-width: 768px) {
       #terminal-window {
         width: 95%;
@@ -253,18 +252,18 @@
   </div>
 
   <script>
-    
+    // Terminal elements
     const output = document.getElementById('output');
     const input = document.getElementById('userInput');
     const cursor = document.getElementById('cursor');
     const prompt = document.querySelector('.prompt');
     
-    
+    // Terminal state
     let currentPath = '~';
     let commandHistory = [];
     let historyIndex = -1;
     
-    
+    // File system structure with resume content
     const filesystem = {
       '~': {
         'aboutme.txt': `
@@ -505,12 +504,12 @@ Technologies: C++, C#, DLL Development, 3D Scanning
       }
     };
     
-    
+    // Update prompt based on current path
     function updatePrompt() {
       prompt.textContent = `visitor@wilson:${currentPath}$`;
     }
     
-    
+    // Get directory contents
     function getDirectory(path) {
       if (path === '~') return filesystem['~'];
       
@@ -525,7 +524,7 @@ Technologies: C++, C#, DLL Development, 3D Scanning
       return current;
     }
     
-    
+    // Get file contents
     function getFile(path) {
       const isAbsolutePath = path.includes('/');
       
@@ -546,7 +545,7 @@ Technologies: C++, C#, DLL Development, 3D Scanning
       }
     }
     
-    
+    // Display ASCII art logo
     function showLogo() {
       return `<div class="ascii-art">
  __        ___  _    _____           _   _   
@@ -559,7 +558,7 @@ Technologies: C++, C#, DLL Development, 3D Scanning
 </div>`;
     }
     
-    
+    // Handle commands
     function handleCommand(cmd) {
       const commandLine = document.createElement('div');
       commandLine.innerHTML = `<span class="prompt">${prompt.textContent}</span> ${cmd}`;
@@ -571,16 +570,16 @@ Technologies: C++, C#, DLL Development, 3D Scanning
         return;
       }
       
-      
+      // Save to history
       commandHistory.unshift(cleanCmd);
       historyIndex = -1;
       
-      
+      // Parse command and arguments
       const tokens = cleanCmd.split(' ');
       const command = tokens[0].toLowerCase();
       const args = tokens.slice(1);
       
-      
+      // Execute command
       switch (command) {
         case 'clear':
           output.innerHTML = '';
@@ -750,49 +749,49 @@ Technologies: C++, C#, DLL Development, 3D Scanning
           output.appendChild(error);
       }
       
-      
+      // Manage terminal history
       pruneTerminalHistory();
       
-      
+      // Ensure proper scrolling
       scrollToBottom();
     }
     
-    
+    // Function to scroll to the bottom of the terminal
     function scrollToBottom() {
-      
+      // Force a reflow to ensure the browser has finished calculating layout
       void terminal.offsetHeight;
       
-      
+      // Scroll to bottom
       terminal.scrollTop = terminal.scrollHeight;
       
-      
+      // Additional scroll after a tiny delay to ensure it catches any post-render adjustments
       setTimeout(() => {
         terminal.scrollTop = terminal.scrollHeight;
       }, 10);
     }
     
-    
+    // Function to prune terminal history to maintain performance
     function pruneTerminalHistory() {
-      const MAX_LINES = 300; 
+      const MAX_LINES = 300; // Adjust as needed
       const outputChildren = output.children;
       
       if (outputChildren.length > MAX_LINES) {
-        
+        // When removing old content, do it in batches for better performance
         const batchSize = outputChildren.length - MAX_LINES;
         
-        
+        // Create a document fragment to minimize reflows
         const fragment = document.createDocumentFragment();
         for (let i = batchSize; i < outputChildren.length; i++) {
           fragment.appendChild(outputChildren[i].cloneNode(true));
         }
         
-        
+        // Clear and replace with pruned content
         output.innerHTML = '';
         output.appendChild(fragment);
       }
     }
     
-    
+    // Welcome message
     function showWelcome() {
       return `${showLogo()}
 <span class="success">Welcome to my interactive terminal portfolio!</span>
@@ -808,14 +807,14 @@ Quick navigation:
 - <span class="highlight">cat contact.txt</span> - Get contact info`;
     }
     
-    
+    // Update cursor position whenever the input changes
     function updateCursorPosition() {
       const cursorPosition = input.selectionStart;
       
-      
+      // Get the text content up to the cursor position
       const textBeforeCursor = input.value.substring(0, cursorPosition);
       
-      
+      // Create a temporary span to measure the text width
       const tempSpan = document.createElement('span');
       tempSpan.style.visibility = 'hidden';
       tempSpan.style.position = 'absolute';
@@ -824,15 +823,15 @@ Quick navigation:
       tempSpan.textContent = textBeforeCursor;
       document.body.appendChild(tempSpan);
       
-      
+      // Set cursor position
       const textWidth = tempSpan.getBoundingClientRect().width;
       cursor.style.left = textWidth + 'px';
       
-      
+      // Clean up
       document.body.removeChild(tempSpan);
     }
     
-    
+    // Handle key events for command history
     input.addEventListener('keydown', function(e) {
       switch (e.key) {
         case 'Enter':
@@ -846,7 +845,7 @@ Quick navigation:
             historyIndex++;
             input.value = commandHistory[historyIndex];
             
-            
+            // Move cursor to end
             setTimeout(() => {
               input.selectionStart = input.selectionEnd = input.value.length;
               updateCursorPosition();
@@ -860,7 +859,7 @@ Quick navigation:
             historyIndex--;
             input.value = commandHistory[historyIndex];
             
-            
+            // Move cursor to end
             setTimeout(() => {
               input.selectionStart = input.selectionEnd = input.value.length;
               updateCursorPosition();
@@ -891,18 +890,18 @@ Quick navigation:
       }
     });
     
-    
+    // Handle tab completion
     function handleTabCompletion() {
       const inputText = input.value.trim();
       const tokens = inputText.split(' ');
       
-      
+      // List of available commands
       const availableCommands = [
         'help', 'ls', 'cd', 'cat', 'clear', 'pwd', 
         'whoami', 'email', 'date', 'open', 'welcome'
       ];
       
-      
+      // If input is empty or just spaces, show all available commands
       if (inputText === '') {
         const commandsOutput = document.createElement('div');
         commandsOutput.innerHTML = `<div class="dim">Available commands: ${availableCommands.join(', ')}</div>`;
@@ -911,7 +910,7 @@ Quick navigation:
         return;
       }
       
-      
+      // Complete command if there's only one token
       if (tokens.length === 1 && !inputText.includes(' ')) {
         const partialCommand = tokens[0].toLowerCase();
         const matchingCommands = availableCommands.filter(cmd => 
@@ -919,17 +918,17 @@ Quick navigation:
         );
         
         if (matchingCommands.length === 1) {
-          
+          // Single match - complete it
           input.value = matchingCommands[0] + ' ';
           updateCursorPosition();
         } else if (matchingCommands.length > 1) {
-          
+          // Multiple matches - show options
           const commandsOutput = document.createElement('div');
           commandsOutput.innerHTML = `<div class="dim">Matching commands: ${matchingCommands.join(', ')}</div>`;
           output.appendChild(commandsOutput);
           scrollToBottom();
           
-          
+          // Find common prefix and fill it in
           const commonPrefix = findCommonPrefix(matchingCommands);
           if (commonPrefix.length > partialCommand.length) {
             input.value = commonPrefix;
@@ -939,25 +938,25 @@ Quick navigation:
         return;
       }
       
-      
+      // Complete file or directory if there are multiple tokens
       if (tokens.length > 1 || inputText.endsWith(' ')) {
         const command = tokens[0].toLowerCase();
         let lastToken = '';
         
-        
+        // Determine lastToken based on command context
         if (inputText.endsWith(' ')) {
           lastToken = '';
         } else {
           lastToken = tokens[tokens.length - 1];
         }
         
-        
+        // For file/directory completion commands
         if (['ls', 'cd', 'cat'].includes(command)) {
-          
+          // Determine base path and partial name
           let basePath = currentPath;
           let partialName = lastToken;
           
-          
+          // Handle partial paths with directory parts
           if (partialName.includes('/')) {
             const parts = partialName.split('/');
             partialName = parts.pop();
@@ -971,29 +970,29 @@ Quick navigation:
               basePath = basePath + '/' + pathParts;
             }
             
-            
+            // Clean up double slashes
             basePath = basePath.replace(/\/\//g, '/');
           }
           
-          
+          // Get items in the directory
           const baseDir = getDirectory(basePath);
           if (!baseDir) return;
           
-          
+          // Find matching items
           const items = Object.keys(baseDir);
           const matchingItems = items.filter(item => 
             item.toLowerCase().startsWith(partialName.toLowerCase())
           );
           
           if (matchingItems.length === 1) {
-            
+            // Single match - complete it
             const item = matchingItems[0];
             let isDirectory = typeof baseDir[item] === 'object' && !baseDir[item].includes;
             
-            
+            // Build the completed text based on input context
             let completedText = '';
             if (inputText.endsWith(' ') || lastToken === '') {
-              
+              // When completing after a space
               if (basePath === currentPath) {
                 completedText = `${inputText}${item}${isDirectory ? '/' : ''}`;
               } else {
@@ -1003,7 +1002,7 @@ Quick navigation:
                 completedText = `${tokens.slice(0, -1).join(' ')} ${basePathFormatted}${item}${isDirectory ? '/' : ''}`;
               }
             } else {
-              
+              // When completing a partial item
               const inputWithoutLastToken = inputText.substring(0, inputText.length - lastToken.length);
               const basePathPart = basePath === currentPath || lastToken.includes('/') 
                 ? '' 
@@ -1014,7 +1013,7 @@ Quick navigation:
             input.value = completedText;
             updateCursorPosition();
           } else if (matchingItems.length > 1) {
-            
+            // Multiple matches - show options
             const itemsOutput = document.createElement('div');
             
             const formattedItems = matchingItems.map(item => {
@@ -1032,10 +1031,10 @@ Quick navigation:
             output.appendChild(itemsOutput);
             scrollToBottom();
             
-            
+            // Find common prefix and fill it in
             const commonPrefix = findCommonPrefix(matchingItems);
             if (commonPrefix.length > partialName.length) {
-              
+              // Replace partial name with common prefix
               if (inputText.endsWith(' ') || lastToken === '') {
                 input.value = `${inputText}${commonPrefix}`;
               } else {
@@ -1049,7 +1048,7 @@ Quick navigation:
       }
     }
     
-    
+    // Helper function to find common prefix among strings
     function findCommonPrefix(strings) {
       if (strings.length === 0) return '';
       if (strings.length === 1) return strings[0];
@@ -1069,53 +1068,53 @@ Quick navigation:
       return firstStr.substring(0, prefixLength);
     }
     
-    
+    // Update cursor on input change and mouse click
     input.addEventListener('input', updateCursorPosition);
     input.addEventListener('click', updateCursorPosition);
     input.addEventListener('keyup', updateCursorPosition);
     
-    
+    // Initial setup
     document.addEventListener('DOMContentLoaded', function() {
-      
+      // Create references to DOM elements
       const terminal = document.getElementById('terminal');
       
-      
+      // Show welcome message
       const welcomeOutput = document.createElement('div');
       welcomeOutput.innerHTML = showWelcome();
       output.appendChild(welcomeOutput);
       
-      
+      // Add scroll anchor 
       const scrollAnchor = document.createElement('div');
       scrollAnchor.id = 'scroll-anchor';
       output.appendChild(scrollAnchor);
       
-      
+      // Focus input and scroll to bottom
       input.focus();
       scrollToBottom();
       
-      
+      // Initialize cursor position
       updateCursorPosition();
     });
     
-    
+    // Keep focus on input when clicking anywhere
     document.addEventListener('click', function() {
       input.focus();
       updateCursorPosition();
     });
     
-    
+    // Get terminal element for scrolling
     const terminal = document.getElementById('terminal');
     
-    
+    // Improve scrolling behavior by handling wheel events
     terminal.addEventListener('wheel', function() {
-      
+      // Only auto-scroll if we're already near the bottom
       const isNearBottom = terminal.scrollHeight - terminal.scrollTop - terminal.clientHeight < 50;
       if (isNearBottom) {
         scrollToBottom();
       }
     });
     
-    
+    // Observer for terminal content changes to ensure proper scrolling
     const terminalObserver = new MutationObserver(() => {
       const isNearBottom = terminal.scrollHeight - terminal.scrollTop - terminal.clientHeight < 50;
       if (isNearBottom) {
@@ -1123,7 +1122,7 @@ Quick navigation:
       }
     });
     
-    
+    // Start observing terminal content changes
     terminalObserver.observe(output, { childList: true, subtree: true });
   </script>
 </body>

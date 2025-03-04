@@ -1,0 +1,16 @@
+{{ define "main" }}
+<main style="font-family: 'Share Tech Mono', monospace; max-width: 800px; margin: 0 auto; padding: 2rem;">
+  <h1>{{ .Title }}</h1>
+  {{ range .Pages }}
+    <article style="margin-bottom: 1.5rem;">
+      <h2>
+        <a href="{{ .Permalink }}" style="color: #33ff33; text-decoration: none;">{{ .Title }}</a>
+      </h2>
+      <p>{{ .Summary }}</p>
+    </article>
+  {{ end }}
+  <footer>
+    <a href="/" style="color: #33ff33; text-decoration: none;">← Return to Terminal</a>
+  </footer>
+</main>
+{{ end }} 
