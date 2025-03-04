@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Terminal on Wil Scott - Terminal Portfolio</title>
+    <title>Wil Scott - Terminal Portfolio</title>
     <link>//localhost:1313/</link>
-    <description>Recent content in Terminal on Wil Scott - Terminal Portfolio</description>
+    <description>Recent content on Wil Scott - Terminal Portfolio</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <atom:link href="//localhost:1313/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Contact</title>
-      <link>//localhost:1313/contact/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/contact/</guid>
-      <description>&lt;p&gt;Interested in &lt;strong&gt;hiring me&lt;/strong&gt; or &lt;strong&gt;collaborating&lt;/strong&gt; on a project? I&amp;rsquo;d love to hear from you! You can reach out through the form below.&lt;/p&gt;&#xA;&lt;h3 id=&#34;send-me-a-message&#34;&gt;Send me a message&lt;/h3&gt;&#xA;&lt;form action=&#34;https://formspree.io/f/mldgqjoy&#34; method=&#34;POST&#34; style=&#34;max-width: 500px; margin: 0 auto;&#34;&gt;&#xA;  &lt;div style=&#34;margin-bottom: 1rem;&#34;&gt;&#xA;    &lt;label for=&#34;name&#34; style=&#34;display: block; margin-bottom: 0.5rem;&#34;&gt;Name:&lt;/label&gt;&#xA;    &lt;input type=&#34;text&#34; id=&#34;name&#34; name=&#34;name&#34; required style=&#34;width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;&#34;&gt;&#xA;  &lt;/div&gt;&#xA;  &lt;div style=&#34;margin-bottom: 1rem;&#34;&gt;&#xA;    &lt;label for=&#34;email&#34; style=&#34;display: block; margin-bottom: 0.5rem;&#34;&gt;Email:&lt;/label&gt;&#xA;    &lt;input type=&#34;email&#34; id=&#34;email&#34; name=&#34;_replyto&#34; required style=&#34;width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;&#34;&gt;&#xA;  &lt;/div&gt;&#xA;  &lt;div style=&#34;margin-bottom: 1.5rem;&#34;&gt;&#xA;    &lt;label for=&#34;message&#34; style=&#34;display: block; margin-bottom: 0.5rem;&#34;&gt;Message:&lt;/label&gt;&#xA;    &lt;textarea id=&#34;message&#34; name=&#34;message&#34; rows=&#34;5&#34; required style=&#34;width: 100%; padding: 0.5rem; border: 1px solid #ccc; border-radius: 4px;&#34;&gt;&lt;/textarea&gt;&#xA;  &lt;/div&gt;&#xA;&lt;p&gt;&lt;button type=&#34;submit&#34; style=&#34;background-color: #0066cc; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 4px; cursor: pointer;&#34;&gt;Send Message&lt;/button&gt;&lt;/p&gt;</description>
-    </item>
   </channel>
 </rss>
