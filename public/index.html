@@ -17,71 +17,75 @@
     }
     
     body {
-      background-color: #111;
-      color: #33ff33;
-      font-family: 'Share Tech Mono', monospace;
-      font-size: 16px;
       margin: 0;
       padding: 0;
-      height: 100vh;
+      background-color: #1e1e1e;
+      font-family: 'Share Tech Mono', monospace;
       display: flex;
       justify-content: center;
       align-items: center;
+      min-height: 100vh;
+      color: #f8f8f2;
     }
     
      
-    #terminal-window {
-      width: 85%;
-      max-width: 850px;
-      height: 75vh;
+    #terminal-container {
+      width: 90%;
+      max-width: 900px;
+      height: 85vh;
+      background-color: #282a36;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
       display: flex;
       flex-direction: column;
-      border-radius: 6px;
       overflow: hidden;
-      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.7);
-      background-color: #000;
     }
     
      
     #title-bar {
-      background: linear-gradient(to bottom, #3a3a3a, #2a2a2a);
-      padding: 8px 15px;
+      background: linear-gradient(to right, #383a59, #383a59);
+      height: 28px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid #000;
-    }
-    
-    .title-buttons {
-      display: flex;
-      gap: 8px;
+      padding: 0 10px;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
     }
     
     .button {
       width: 12px;
       height: 12px;
       border-radius: 50%;
+      margin-right: 8px;
+      cursor: pointer;
     }
     
-    .close { background-color: #ff5f57; }
-    .minimize { background-color: #ffbd2e; }
-    .maximize { background-color: #28ca41; }
+    #close-button {
+      background-color: #ff5f56;
+    }
     
-    .title-text {
-      color: #ddd;
+    #minimize-button {
+      background-color: #ffbd2e;
+    }
+    
+    #maximize-button {
+      background-color: #27c93f;
+    }
+    
+    #title {
+      color: #f8f8f2;
+      margin-left: 10px;
       font-size: 14px;
-      text-align: center;
       flex-grow: 1;
-      user-select: none;
+      text-align: center;
     }
     
      
     #terminal {
-      flex-grow: 1;
       padding: 15px;
+      flex-grow: 1;
       overflow-y: auto;
       position: relative;
-      background-color: #000;
       scroll-behavior: smooth;
     }
     
@@ -122,30 +126,40 @@
     #input-line {
       display: flex;
       align-items: center;
-      width: 100%;
-      position: relative;
+      margin-top: 5px;
     }
     
-    .prompt {
-      color: #33ff33;
+    #prompt {
+      color: #50fa7b;
       margin-right: 8px;
-      user-select: none;
-      text-shadow: 0 0 2px rgba(51, 255, 51, 0.4);
+      font-weight: bold;
+    }
+    
+    #current-directory {
+      color: #8be9fd;
+      margin-right: 5px;
     }
     
      
-    #userInput {
-      background: transparent;
-      border: none;
-      color: #33ff33;
-      font-family: inherit;
-      font-size: inherit;
-      outline: none;
+    #inputContainer {
+      position: relative;
       flex-grow: 1;
-      text-shadow: 0 0 2px rgba(51, 255, 51, 0.4);
-      caret-color: transparent;  
+      display: flex;
+      align-items: center;
+    }
+    
+    #userInput {
+      background-color: transparent;
+      border: none;
+      color: #f8f8f2;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 16px;
+      width: 100%;
+      outline: none;
+      caret-color: transparent;
       padding: 0;
       margin: 0;
+      text-shadow: 0 0 2px rgba(51, 255, 51, 0.4);
     }
     
      
@@ -156,24 +170,79 @@
     
     #cursor {
       position: absolute;
-      left: 0;
-      top: 0;
+      background-color: #f8f8f2;
       width: 8px;
       height: 16px;
-      background-color: #33ff33;
-      display: inline-block;
+      left: 0;
+      top: 2px;
       animation: blink 1s step-end infinite;
-      box-shadow: 0 0 2px rgba(51, 255, 51, 0.4);
     }
     
      
-    .error { color: #ff5f57; text-shadow: 0 0 2px rgba(255, 95, 87, 0.4); }
-    .success { color: #28ca41; text-shadow: 0 0 2px rgba(40, 202, 65, 0.4); }
-    .file { color: #33ff33; }
-    .directory { color: #4ec9ff; text-shadow: 0 0 2px rgba(78, 201, 255, 0.4); }
-    .executable { color: #ffbd2e; text-shadow: 0 0 2px rgba(255, 189, 46, 0.4); }
-    .highlight { background-color: rgba(51, 255, 51, 0.2); padding: 0 3px; }
-    .dim { opacity: 0.7; }
+    .command {
+      color: #f1fa8c;
+    }
+    
+    .error {
+      color: #ff5555;
+    }
+    
+    .success {
+      color: #50fa7b;
+    }
+    
+    .directory {
+      color: #8be9fd;
+      font-weight: bold;
+    }
+    
+    .file {
+      color: #f8f8f2;
+    }
+    
+    .highlight {
+      color: #bd93f9;
+    }
+    
+    .welcome {
+      color: #ffb86c;
+    }
+    
+    .scan-line {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.1);
+      opacity: 0.5;
+      pointer-events: none;
+      animation: scan 6s linear infinite;
+    }
+    
+    @keyframes scan {
+      0% { top: 0; }
+      100% { top: 100%; }
+    }
+    
+    #anchor {
+      height: 1px;
+      width: 1px;
+      position: relative;
+    }
+    
+    .output-text {
+      line-height: 1.4;
+      margin: 2px 0;
+    }
+    
+    #text-measure {
+      position: absolute;
+      visibility: hidden;
+      height: auto;
+      width: auto;
+      white-space: nowrap;
+    }
     
      
     .ascii-art {
@@ -193,8 +262,8 @@
     
      
     @keyframes blink {
-      0%, 49% { opacity: 1; }
-      50%, 100% { opacity: 0; }
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
     }
     
      
@@ -203,12 +272,16 @@
     }
     
     #terminal::-webkit-scrollbar-track {
-      background: transparent;
+      background: #282a36;
     }
     
     #terminal::-webkit-scrollbar-thumb {
-      background-color: rgba(51, 255, 51, 0.3);
+      background: #44475a;
       border-radius: 4px;
+    }
+    
+    #terminal::-webkit-scrollbar-thumb:hover {
+      background: #6272a4;
     }
     
      
@@ -219,7 +292,7 @@
     
      
     @media (max-width: 768px) {
-      #terminal-window {
+      #terminal-container {
         width: 95%;
         height: 85vh;
       }
@@ -231,7 +304,7 @@
   </style>
 </head>
 <body>
-  <div id="terminal-window">
+  <div id="terminal-container">
     <div id="title-bar">
       <div class="title-buttons">
         <div class="button close"></div>
@@ -243,7 +316,7 @@
     <div id="terminal">
       <div id="output"></div>
       <div id="input-line">
-        <span class="prompt">visitor@wilson:~$</span>
+        <span id="prompt" class="prompt">visitor@wilson:~$</span>
         <span id="inputContainer" style="position: relative; display: inline-block; flex-grow: 1;">
           <input type="text" id="userInput" autocomplete="off" autofocus>
           <span id="cursor" style="position: absolute; left: 0; top: 0;"></span>
@@ -257,7 +330,7 @@
     const output = document.getElementById('output');
     const input = document.getElementById('userInput');
     const cursor = document.getElementById('cursor');
-    const prompt = document.querySelector('.prompt');
+    const prompt = document.getElementById('prompt');
     
     
     let currentPath = '~';
@@ -507,7 +580,8 @@ Technologies: C++, C#, DLL Development, 3D Scanning
     
     
     function updatePrompt() {
-      prompt.textContent = `visitor@wilson:${currentPath}$`;
+      let promptHTML = `<span style="color: #50fa7b;">➜</span> <span style="color: #8be9fd;">${currentPath}</span> <span style="color: #f1fa8c;">$</span>`;
+      document.getElementById('prompt').innerHTML = promptHTML;
     }
     
     
@@ -561,8 +635,11 @@ Technologies: C++, C#, DLL Development, 3D Scanning
     
     
     function handleCommand(cmd) {
+      
+      const currentPromptHTML = prompt.innerHTML;
+      
       const commandLine = document.createElement('div');
-      commandLine.innerHTML = `<span class="prompt">${prompt.textContent}</span> ${cmd}`;
+      commandLine.innerHTML = `<span class="prompt">${currentPromptHTML}</span> ${cmd}`;
       output.appendChild(commandLine);
       
       const cleanCmd = cmd.trim();
@@ -635,16 +712,32 @@ Technologies: C++, C#, DLL Development, 3D Scanning
           if (args.length === 0 || args[0] === '~') {
             currentPath = '~';
             updatePrompt();
+            
+            
+            document.querySelector('.title-text').textContent = `wilson@scott:${currentPath}`;
             break;
           }
           
           if (args[0] === '..') {
             if (currentPath === '~') break;
             
-            const parts = currentPath.split('/');
-            parts.pop();
-            currentPath = parts.join('/') || '~';
+            
+            console.log("Current path before cd ..: ", currentPath);
+            
+            
+            if (currentPath === '~/projects' || currentPath === '/projects') {
+              currentPath = '~';
+            } else {
+              const parts = currentPath.split('/').filter(p => p);
+              parts.pop();
+              currentPath = parts.length ? (currentPath.startsWith('~') ? '~/' : '/') + parts.join('/') : '~';
+            }
+            
+            console.log("New path after cd ..: ", currentPath);
             updatePrompt();
+            
+            
+            document.querySelector('.title-text').textContent = `wilson@scott:${currentPath}`;
             break;
           }
           
@@ -657,6 +750,9 @@ Technologies: C++, C#, DLL Development, 3D Scanning
           if (targetDir) {
             currentPath = target;
             updatePrompt();
+            
+            
+            document.querySelector('.title-text').textContent = `wilson@scott:${currentPath}`;
           } else {
             const error = document.createElement('div');
             error.className = 'error';
@@ -766,6 +862,7 @@ Technologies: C++, C#, DLL Development, 3D Scanning
       terminal.scrollTop = terminal.scrollHeight;
       
       
+      
       setTimeout(() => {
         terminal.scrollTop = terminal.scrollHeight;
       }, 10);
@@ -797,7 +894,7 @@ Technologies: C++, C#, DLL Development, 3D Scanning
       return `${showLogo()}
 <span class="success">Welcome to my interactive terminal portfolio!</span>
 
-I'm a versatile software engineer experienced in C, C++, Python, and various scripting languages
+I'm a software engineer specializing in C++, Python, and embedded systems.
 This terminal allows you to explore my background and projects.
 Type <span class="highlight">help</span> to see available commands.
 
@@ -1088,6 +1185,9 @@ Quick navigation:
       const scrollAnchor = document.createElement('div');
       scrollAnchor.id = 'scroll-anchor';
       output.appendChild(scrollAnchor);
+      
+      
+      updatePrompt();
       
       
       input.focus();
